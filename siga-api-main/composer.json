@@ -1,0 +1,21 @@
+{
+    "name": "cyber-root0/siga-api",
+    "description": "API do Sistema SIGA | Fatecs",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bruno Alves",
+            "email": "boteistem@gmail.com"
+        }
+    ],
+    "require": {
+        "guzzlehttp/guzzle": "*",
+        "symfony/dom-crawler": "^6.0",
+        "symfony/css-selector": "^6.0",
+        "halaxa/json-machine": "^1.1"
+    }
+}
