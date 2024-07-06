@@ -42,30 +42,7 @@ const Profile: React.FC<ProfileProps> = ({uuid}) => {
     
   return (
     <View style = {styles.container}>
-        <Pressable
-            style={({ pressed }) => [
-              {
-                height: 40,
-                width: 60,
-                borderRadius: 5,
-                borderWidth: 1,
-                borderColor: '#ccc',
-                alignSelf: 'flex-end',
-                alignItems: 'center',
-                justifyContent: 'center',
-                
-                backgroundColor: pressed ? '#C0C0C0' : backgroundColor, // Altera a cor de fundo quando pressionado
-              },
-              styles.btnSair,
-              {}
-              // Estilos adicionais
-            ]}
-            onPress={() => {
-              // Lógica para ação ao pressionar o botão
-              console.log('Botão Sair pressionado');
-            }}> 
-             <Text style={styles.textBtnSair}>Sair</Text>
-          </Pressable>
+        
         <View style = {styles.header}>
           <Text style={[styles.title, {color: backgroundColor}]}>{profile?.NOME}</Text>
           <Text style={[styles.title, {color: backgroundColor}]}>RA: {profile?.REGISTRO_ACADEMICO}</Text>
@@ -77,6 +54,29 @@ const Profile: React.FC<ProfileProps> = ({uuid}) => {
         <Text style={[styles.campus]}>{profile?.EMAIL}</Text>
         
         </View>
+        <Pressable
+            style={({ pressed }) => [
+              {
+                height: 40,
+                width: 60,
+                borderRadius: 5,
+                borderWidth: 1,
+                borderColor: '#ccc',
+                alignSelf: 'center',
+                alignItems: 'center',
+                justifyContent: 'center',
+                backgroundColor: pressed ? '#C0C0C0' : backgroundColor, // Altera a cor de fundo quando pressionado
+              },
+              styles.btnSair,
+              {}
+              // Estilos adicionais
+            ]}
+            onPress={() => {
+              // Lógica para ação ao pressionar o botão
+              console.log('Botão Sair pressionado');
+            }}> 
+             <Text style={styles.textBtnSair}>Sair</Text>
+          </Pressable>  
       </View>
     
   )

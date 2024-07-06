@@ -1,6 +1,6 @@
 
 //imports
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useId } from 'react';
 import { View, StyleSheet, Text } from 'react-native';
 import axios from 'axios';
 import { useThemeColor } from '@/hooks/useThemeColor';
@@ -14,7 +14,7 @@ interface Disciplina {
 
 //declarando o tipo das variaveis
 interface DisciplinasProps {
-  uuid: string;
+  uuid: string | null;
 }
 ///isso foi utilizando o comando RAFCE do Snipets ES7-REACTSNIPTs, ele cria automaticamente a const, eu só alterei
 ///pra declarar o qual seria os dados que a funcao diciplinas entraria, enfim, isso é typescript....
@@ -32,6 +32,7 @@ const Disciplinas: React.FC<DisciplinasProps> = ({ uuid }) => {
         //bloco try catch simples
       try {
         // Requisição GET usando axios para obter as disciplinas
+        console.log(uuid, "O uid chegou")
         const resposta = await axios.get(`http://192.168.1.206:80/api/disciplinas/all?uid=${uuid}`, {
             //passo pelo header o token 
           headers: {

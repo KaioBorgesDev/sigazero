@@ -2,9 +2,27 @@ import {View, Text, TextInput, Pressable, StyleSheet, Image} from 'react-native'
 import { ExternalLink } from '../../components/ExternalLink'
 import { useThemeColor } from '@/hooks/useThemeColor';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
+import { useState } from 'react';
+import storage from '../../utils/storage';
+import { useRouter } from 'expo-router';
+
 
 const Login = () => {
   const backgroundColor = useThemeColor({ light: '#101010', dark: '#f0f0f0' }, 'background');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const router = useRouter();
+
+  const inserirCrendenciais = async () => {
+      const token = 'cf6bdc9432651aab8cdcab6cd121ec@qztiUKW9yC8mJnt1+3ej4qe4CNQ08OCXQu64ZoLU'
+      try{
+        
+        console.log(storage.setItem('uuid', token))
+        
+      }catch(e){
+        console.log(e)
+      }
+  }
   return (
     <ParallaxScrollView
       headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
@@ -18,8 +36,8 @@ const Login = () => {
 <View style = {styles.container}> 
   <View style={styles.cardLogin}>
   <Text style={[styles.title]}>Login</Text>
-  <TextInput placeholder= 'CPF'style={[styles.textBox]}></TextInput>
-  <TextInput placeholder= 'Senha' style={[styles.textBox]}></TextInput>
+  <TextInput placeholder= 'CPF' style={[styles.textBox]} onChangeText={setEmail}></TextInput>
+  <TextInput placeholder= 'Senha' style={[styles.textBox]} onChangeText={setPassword}></TextInput>
       <Pressable
           style={({ pressed }) => [
             {
@@ -34,13 +52,10 @@ const Login = () => {
               backgroundColor: pressed ? '#C0C0C0' : backgroundColor, // Altera a cor de fundo quando pressionado
             },
             styles.btnLogin,
-            {}
+            {color: backgroundColor}
             // Estilos adicionais
           ]}
-          onPress={() => {
-            // Lógica para ação ao pressionar o botão
-            console.log('Botão LoginbtnLogin pressionado');
-          }}> 
+          onPress={inserirCrendenciais}> 
           <Text style={styles.textBtnLogin}>Entrar</Text>
         </Pressable>
       </View>
@@ -91,7 +106,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
     btnLogin: {
-      marginTop: 70, 
+      margin: 10, 
     },
     textBtnLogin: {
       fontSize: 16,
