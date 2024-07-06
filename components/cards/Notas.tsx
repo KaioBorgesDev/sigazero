@@ -38,7 +38,7 @@ const Notas: React.FC<NotasProps> = ({uuid}) => {
      
       try
       {
-        const resposta = await axios.get(`http://192.168.1.6:80/api/notas/all?uid=${uuid}`, {
+        const resposta = await axios.get(`http://192.168.1.206:80/api/notas/all?uid=${uuid}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

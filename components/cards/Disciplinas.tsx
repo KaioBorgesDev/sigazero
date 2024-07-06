@@ -32,7 +32,7 @@ const Disciplinas: React.FC<DisciplinasProps> = ({ uuid }) => {
         //bloco try catch simples
       try {
         // Requisição GET usando axios para obter as disciplinas
-        const resposta = await axios.get(`http://192.168.1.6:80/api/disciplinas/all?uid=${uuid}`, {
+        const resposta = await axios.get(`http://192.168.1.206:80/api/disciplinas/all?uid=${uuid}`, {
             //passo pelo header o token 
           headers: {
             Authorization: `Bearer ${token}`

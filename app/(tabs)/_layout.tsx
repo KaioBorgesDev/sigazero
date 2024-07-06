@@ -13,7 +13,7 @@ export default function TabLayout() {
         headerShown: false,
       }}>
       <Tabs.Screen
-        name="index"
+        name="home"
         options={{
           title: 'Home',
           tabBarIcon: ({ color, focused }) => (
@@ -34,11 +34,6 @@ export default function TabLayout() {
       options={{title: 'Perfil', tabBarIcon: ({color,focused}) =>(
         <TabBarIcon name={focused ?'person' : 'person-outline' } color={color}></TabBarIcon>
       )}}/>
-
-       
-
-
-     
     </Tabs>
   );
 }

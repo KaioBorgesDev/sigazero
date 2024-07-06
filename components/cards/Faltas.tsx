@@ -32,7 +32,7 @@ const Faltas : React.FC<FaltasProps> = ({uuid}) => {
     useEffect(()=>{
         const buscarFaltas = async()=>{
             try{
-                const resposta_faltas = await axios.get(`http://192.168.1.6:80/api/faltas/all?uid=${uuid}`, {
+                const resposta_faltas = await axios.get(`http://192.168.1.206:80/api/faltas/all?uid=${uuid}`, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     }

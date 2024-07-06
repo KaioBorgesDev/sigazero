@@ -1,7 +1,7 @@
 import { useThemeColor } from '@/hooks/useThemeColor'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import {View, Text, StyleSheet, Image} from 'react-native'
+import {View, Text, StyleSheet, Pressable} from 'react-native'
 
 interface Profile{
     NOME: string,
@@ -25,7 +25,7 @@ const Profile: React.FC<ProfileProps> = ({uuid}) => {
     useEffect(()=>{
         const buscarPerfil = async () => {
             try{
-                const resposta = await axios(`http://192.168.1.6:80/api/aluno/all?uid=${uuid}`, {
+                const resposta = await axios(`http://192.168.1.206:80/api/aluno/all?uid=${uuid}`, {
                   headers: {
                     Authorization: `Bearer ${token}`
                   }
@@ -39,22 +39,43 @@ const Profile: React.FC<ProfileProps> = ({uuid}) => {
         }
         buscarPerfil();
     },[uuid])
+    
   return (
-
     <View style = {styles.container}>
+        <Pressable
+            style={({ pressed }) => [
+              {
+                height: 40,
+                width: 60,
+                borderRadius: 5,
+                borderWidth: 1,
+                borderColor: '#ccc',
+                alignSelf: 'flex-end',
+                alignItems: 'center',
+                justifyContent: 'center',
+                
+                backgroundColor: pressed ? '#C0C0C0' : backgroundColor, // Altera a cor de fundo quando pressionado
+              },
+              styles.btnSair,
+              {}
+              // Estilos adicionais
+            ]}
+            onPress={() => {
+              // Lógica para ação ao pressionar o botão
+              console.log('Botão Sair pressionado');
+            }}> 
+             <Text style={styles.textBtnSair}>Sair</Text>
+          </Pressable>
         <View style = {styles.header}>
-        <Image
-          source={{
-            uri: `${profile?.FOTO_URL}`
-          }}
-          style={styles.userImage}/>
           <Text style={[styles.title, {color: backgroundColor}]}>{profile?.NOME}</Text>
+          <Text style={[styles.title, {color: backgroundColor}]}>RA: {profile?.REGISTRO_ACADEMICO}</Text>
+          <Text style={[styles.campus]}></Text>
         </View>
         <View style = {styles.item}>
         <Text  style={[styles.title]}>{profile?.CURSO} - {profile?.CICLO}° Semestre ({profile?.TURNO})</Text>
-        <Text  style={[styles.campus]}>{profile?.FATEC_UNIDADE}</Text>
-        <Text  style={[styles.title]}>{}</Text>
-        <Text  style={[styles.title]}></Text>
+        <Text style={[styles.campus]}>{profile?.FATEC_UNIDADE}</Text>
+        <Text style={[styles.campus]}>{profile?.EMAIL}</Text>
+        
         </View>
       </View>
     
@@ -66,41 +87,47 @@ const styles = StyleSheet.create({
       padding: 0,
     },
     header: {
-      flexDirection: 'row',
+      flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: "space-between",
-      marginEnd: 10
+      justifyContent: "center",
+      marginEnd: 0
     },
 
     title: {
       textAlign: 'center',
-      fontSize: 15,
-      marginBottom: 20,
+      fontSize: 25,
+      marginBottom: 10,
       fontWeight: 'bold'
     },
     campus: {
       textAlign: 'center',
-      fontSize: 15,
-      marginBottom: 20,
+      fontSize: 20,
+      marginBottom: 15,
     },
     item: {
-      marginBottom: 10,
-      padding: 10,
+      padding: 20,
       backgroundColor: '#f9f9f9',
       borderRadius: 5,
       borderWidth: 1,
-      borderColor: '#ccc',
+      borderColor: '#ccc', 
     },
     descricao: {
       fontWeight: 'bold',
     },
   
     userImage: {
-        height: 90,
-        width: 90,
+        height: 50,
+        width: 50,
         borderWidth: 1,
         margin: 10,
-        borderColor: 'white', 
+        borderColor: 'blue', 
+      },
+      btnSair: {
+        marginTop: 10, 
+      },
+      textBtnSair: {
+        fontSize: 16,
+        fontWeight: 'bold', 
       },
   });
 
