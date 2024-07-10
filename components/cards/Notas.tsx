@@ -25,7 +25,7 @@ interface Nota {
 }
 
 interface NotasProps{
-  uuid: string
+  uuid: string | null
 }
 
 const Notas: React.FC<NotasProps> = ({uuid}) => {
@@ -35,7 +35,6 @@ const Notas: React.FC<NotasProps> = ({uuid}) => {
 
   useEffect( ()=>{
     const buscarNotas = async () => {
-     
       try
       {
         const resposta = await axios.get(`http://192.168.1.206:80/api/notas/all?uid=${uuid}`, {
@@ -44,7 +43,7 @@ const Notas: React.FC<NotasProps> = ({uuid}) => {
           }
         })
 
-        const dados: Nota[] = resposta.data;
+        const dados : Nota[] = await resposta.data;
         setNotas(dados)
       }catch(error){
         console.log(error)

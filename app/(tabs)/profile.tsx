@@ -1,9 +1,28 @@
 import ParallaxScrollView from '@/components/ParallaxScrollView'
 import Profile from '@/components/cards/Profile'
-import React from 'react'
+import storage from '@/utils/storage'
+import React, { useEffect, useState } from 'react'
 import { Text, StyleSheet, Image} from 'react-native'
 const profile = () => {
+  const [uid, setUid] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getUUID = async () => {
+      try {
+        const uid = await storage.getItem('uuid');
+        if (uid !== null) {
+          console.log(uid);
+          setUid(uid);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getUUID();
+  }, []);
+
   return (
+    
     <ParallaxScrollView
     headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
     headerImage={
@@ -12,8 +31,7 @@ const profile = () => {
         style={styles.fatecLogo}
       />
     }>
-    
-    <Profile uuid={"cf6bdc9432651aab8cdcab6cd121ec@qztiUKW9yC8mJnt1+3ej4qe4CNQ08OCXQu64ZoLU"}></Profile>
+    {uid &&<Profile uuid={uid}/>}
   </ParallaxScrollView>
   )
 }

@@ -1,7 +1,9 @@
 import { useThemeColor } from '@/hooks/useThemeColor'
+import storage from '@/utils/storage'
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import {View, Text, StyleSheet, Pressable} from 'react-native'
+
 
 interface Profile{
     NOME: string,
@@ -18,10 +20,12 @@ interface ProfileProps{
     uuid: string,
 }
 const Profile: React.FC<ProfileProps> = ({uuid}) => {
+    const backgroundColor2 = useThemeColor({ light: '#f0f0f0', dark: '#101010' }, 'background');
     const backgroundColor = useThemeColor({ light: '#101010', dark: '#f0f0f0' }, 'background');
     const [profile, setProfile] = useState<Profile>();
     const token = 'd6ae5d9bcb7e4885517c3f60cf11da66';
     
+
     useEffect(()=>{
         const buscarPerfil = async () => {
             try{
@@ -31,7 +35,7 @@ const Profile: React.FC<ProfileProps> = ({uuid}) => {
                   }
                 });
 
-                const dados : Profile = resposta.data;
+                const dados : Profile = await resposta.data;
                 setProfile(dados);
             }catch(error){
               console.log(error)
@@ -65,7 +69,7 @@ const Profile: React.FC<ProfileProps> = ({uuid}) => {
                 alignSelf: 'center',
                 alignItems: 'center',
                 justifyContent: 'center',
-                backgroundColor: pressed ? '#C0C0C0' : backgroundColor, // Altera a cor de fundo quando pressionado
+                backgroundColor: pressed ? '#C0C0C0' : backgroundColor2, // Altera a cor de fundo quando pressionado
               },
               styles.btnSair,
               {}
@@ -73,7 +77,8 @@ const Profile: React.FC<ProfileProps> = ({uuid}) => {
             ]}
             onPress={() => {
               // Lógica para ação ao pressionar o botão
-              console.log('Botão Sair pressionado');
+              storage.removeItem('uuid')
+              
             }}> 
              <Text style={styles.textBtnSair}>Sair</Text>
           </Pressable>  

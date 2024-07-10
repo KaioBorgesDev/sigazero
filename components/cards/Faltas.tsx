@@ -20,7 +20,7 @@ interface Professores{
 }
 
 interface FaltasProps{
-    uuid: string
+    uuid: string | null
 }
 const Faltas : React.FC<FaltasProps> = ({uuid}) => {
     const backgroundColor = useThemeColor({ light: '#101010', dark: '#f0f0f0' }, 'background');

@@ -1,10 +1,28 @@
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, StyleSheet, Image,View} from 'react-native'
 import Notas from '@/components/cards/Notas';
 import { ThemedText } from '@/components/ThemedText';
+import storage from '@/utils/storage';
 
 const notas = () => {
+  const [uid, setUid] = useState<string | null>(null);
+
+  useEffect(() => {
+    const getUUID = async () => {
+      try {
+        const uid = await storage.getItem('uuid');
+        if (uid !== null) {
+          console.log(uid);
+          setUid(uid);
+        }
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    getUUID();
+  }, []);
+
     return (
      <>
      <ParallaxScrollView
@@ -15,7 +33,7 @@ const notas = () => {
           style={styles.fatecLogo}
         />
       }>
-      <Notas uuid='cf6bdc9432651aab8cdcab6cd121ec@qztiUKW9yC8mJnt1+3ej4qe4CNQ08OCXQu64ZoLU'></Notas>
+      {uid && <Notas uuid={uid} />}
 
     </ParallaxScrollView>
         
