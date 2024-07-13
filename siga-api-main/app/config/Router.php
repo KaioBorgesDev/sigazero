@@ -22,6 +22,9 @@ $this->get('/api/disciplinas/all', 'disciplinas\\disciplinas@get');
 //FALTAS
 $this->get('/api/faltas/all', 'faltas\\faltas@get');
 
+//HISTORICO
+$this->get('/api/historico/all', 'historico\\historico@get');
+
 //NOTAS
 $this->get('/api/notas/all', 'notas\\notas@get');
 
