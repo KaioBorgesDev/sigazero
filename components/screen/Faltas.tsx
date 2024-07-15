@@ -1,7 +1,7 @@
 import { useThemeColor } from '@/hooks/useThemeColor'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
-import {View, Text, StyleSheet} from 'react-native'
+import {View, Text, StyleSheet, ActivityIndicator} from 'react-native'
 
 
 interface Falta{
@@ -26,6 +26,7 @@ const Faltas : React.FC<FaltasProps> = ({uuid}) => {
     const backgroundColor = useThemeColor({ light: '#101010', dark: '#f0f0f0' }, 'background');
     const [faltas, setFalta] = useState<Falta[]>([]);
     const [professor, setProfessor] = useState<Professores[]>([]);
+    const [loading, setLoading] = useState<boolean>(true);
     const token = "d6ae5d9bcb7e4885517c3f60cf11da66";
     
 
@@ -48,13 +49,24 @@ const Faltas : React.FC<FaltasProps> = ({uuid}) => {
 
                 const dados_professores : Professores[] = resposta_professores.data;
                 setProfessor(dados_professores);
-
+                
+                
             }catch(error){
                 console.log(error);
+            }finally{
+              setLoading(false);
             }
         }
         buscarFaltas();
     }, [uuid])
+
+    if (loading) {
+      return (
+        <View style={styles.container}>
+          <ActivityIndicator size="large" color={backgroundColor} />
+        </View>
+      );
+    }
 
   return (
     <View style={styles.container}>

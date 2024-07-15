@@ -1,6 +1,7 @@
 import { useThemeColor } from '@/hooks/useThemeColor'
 import storage from '@/utils/storage'
 import axios from 'axios'
+import { router } from 'expo-router'
 import React, { useEffect, useState } from 'react'
 import {View, Text, StyleSheet, Pressable} from 'react-native'
 
@@ -78,7 +79,7 @@ const Profile: React.FC<ProfileProps> = ({uuid}) => {
             onPress={() => {
               // Lógica para ação ao pressionar o botão
               storage.removeItem('uuid')
-              
+              router.push("/")
             }}> 
              <Text style={styles.textBtnSair}>Sair</Text>
           </Pressable>  

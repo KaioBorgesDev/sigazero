@@ -1,5 +1,5 @@
 import ParallaxScrollView from '@/components/ParallaxScrollView'
-import Profile from '@/components/cards/Profile'
+import Profile from '@/components/screen/Profile'
 import storage from '@/utils/storage'
 import React, { useEffect, useState } from 'react'
 import { Text, StyleSheet, Image} from 'react-native'
@@ -11,7 +11,7 @@ const profile = () => {
       try {
         const uid = await storage.getItem('uuid');
         if (uid !== null) {
-          console.log(uid);
+          
           setUid(uid);
         }
       } catch (e) {

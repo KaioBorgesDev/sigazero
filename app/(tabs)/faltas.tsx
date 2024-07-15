@@ -1,5 +1,5 @@
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import Faltas from '@/components/cards/Faltas';
+import Faltas from '@/components/screen/Faltas';
 import React, { useEffect, useState } from 'react'
 import { Text, StyleSheet, Image} from 'react-native'
 import storage from '../../utils/storage';
@@ -12,7 +12,6 @@ const notas = () => {
       try {
         const uid = await storage.getItem('uuid');
         if (uid !== null) {
-          console.log(uid);
           setUid(uid);
         }
       } catch (e) {

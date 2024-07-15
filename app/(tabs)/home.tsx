@@ -2,7 +2,7 @@ import { Image, StyleSheet, Platform } from 'react-native';
 import { useEffect, useState } from 'react';
 import storage from '../../utils/storage';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
-import Disciplinas from '@/components/cards/Disciplinas';
+import Disciplinas from '@/components/screen/Disciplinas';
 
 export default function HomeScreen() {
   const [uid, setUid] = useState<string | null>(null);
@@ -12,7 +12,7 @@ export default function HomeScreen() {
       try {
         const uid = await storage.getItem('uuid');
         if (uid !== null) {
-          console.log(uid);
+          
           setUid(uid);
         }
       } catch (e) {

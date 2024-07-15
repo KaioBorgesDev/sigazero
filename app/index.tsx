@@ -2,7 +2,7 @@ import {View, Text, TextInput, Pressable, StyleSheet, Image} from 'react-native'
 import { useThemeColor } from '@/hooks/useThemeColor';
 import ParallaxScrollView from '@/components/ParallaxScrollView';
 import { useState } from 'react';
-import storage from '../../utils/storage';
+import storage from '../utils/storage';
 import { useRouter } from 'expo-router';
 import axios from 'axios';
 
@@ -28,7 +28,6 @@ const Login = () => {
 
       const resposta = req.data.session_id;
       alert(req.data.message);
-
       //preciso fazer uma requisicao pra ver se o usuario é valido, caso seja, eu libero a entrada, nao apenas a a session criada, ja que nao valida o usuario
       if(resposta){
         storage.setItem('uuid', resposta);
