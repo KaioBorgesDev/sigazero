@@ -21,7 +21,7 @@ const Login = () => {
       formData.append('password',password);
 
       try{
-        const req = await axios.post(`http://192.168.1.206:80/api/session/create`, formData, {
+        const req = await axios.post(`http://192.168.1.7:80/api/session/create`, formData, {
             headers: {'Content-Type': 'multipart/form-data',
             Authorization: 'Bearer d6ae5d9bcb7e4885517c3f60cf11da66'}
     })

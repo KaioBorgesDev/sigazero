@@ -24,7 +24,7 @@ const Historico: React.FC<HistoricoProps> = ({uuid}) => {
     const buscarHistorico = async () => {
       try
       {
-        const resposta = await axios.get(`http://192.168.1.206:80/api/historico/all?uid=${uuid}`, {
+        const resposta = await axios.get(`http://192.168.1.7:80/api/historico/all?uid=${uuid}`, {
           headers: {
             Authorization: `Bearer ${token}`
           }

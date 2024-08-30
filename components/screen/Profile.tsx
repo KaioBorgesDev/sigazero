@@ -30,7 +30,7 @@ const Profile: React.FC<ProfileProps> = ({uuid}) => {
     useEffect(()=>{
         const buscarPerfil = async () => {
             try{
-                const resposta = await axios(`http://192.168.1.206:80/api/aluno/all?uid=${uuid}`, {
+                const resposta = await axios(`http://192.168.1.7:80/api/aluno/all?uid=${uuid}`, {
                   headers: {
                     Authorization: `Bearer ${token}`
                   }

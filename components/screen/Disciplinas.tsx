@@ -23,7 +23,7 @@ const Disciplinas: React.FC<DisciplinasProps> = ({ uuid }) => {
       try {
         if (uuid) {
           console.log(uuid, "O uuid chegou");
-          const resposta = await axios.get(`http://192.168.1.206:80/api/disciplinas/all?uid=${uuid}`, {
+          const resposta = await axios.get(`http://192.168.1.7:80/api/disciplinas/all?uid=${uuid}`, {
             headers: {
               Authorization: `Bearer ${token}`
             },
