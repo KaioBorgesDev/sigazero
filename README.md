@@ -1,41 +1,44 @@
-## Welcome to your Expo app 👋
-This is an Expo project created with create-expo-app.
+# Requisitos Necessários
 
-## Necessário ter
-Visual Studio Code
-PHP & Composer
-Este repositório é meu e utiliza uma API em PHP com créditos ao CyberRoot.
+# - Visual Studio Code
+# - PHP & Composer
+#
+# Este repositório utiliza uma API em PHP com créditos ao CyberRoot.
 
-##  Get started
-Instale as dependências na pasta raiz
+# Começando
 
+# Instalar Dependências
+# Navegue até o diretório raiz e instale as dependências:
+#
+#   npm install
 
-## npm install
+# Iniciar o App Expo
+# Execute o app com:
+#
+#   npx expo start
+#
+# Você encontrará opções para abrir o app em:
+#
+# - Emulador Android
+# - Simulador iOS
+# - WEB
 
-Inicie o app
+# Executar a API PHP
+#
+# 1. Navegue até o diretório SIGA-API-MAIN e instale as dependências:
+#
+#    composer install
+#
+# 2. Entre na pasta public e inicie o servidor PHP:
+#
+#    php -S localhost:8080 index.php
+#
+# 3. Após iniciar o servidor, atualize as rotas na sua aplicação (telas) para apontar para o novo endereço.
 
-## npx expo start
+# Aproveite o app!
 
-No terminal, você encontrará opções para abrir o app em um:
-
-
-Emulador Android
-Simulador iOS
-WEB
-
-
-Para rodar a API:
-
-Entre no diretório SIGA-API-MAIN e baixe as dependências com:
-
-## composer install
-
-Depois, entre na pasta public e rode o servidor PHP com:
-
-
-
-## php -S localhost:8080 index.php
-
-## Após iniciar o servidor, atualize as rotas na aplicação (screens) para apontar para o novo endereço.
-
-Aproveite o app!
+# Observações
+#
+# Este projeto tem como objetivo recriar o sistema SIGA da FATEC em uma versão mobile para fornecer uma interface
+# mais limpa para acessar informações simples, como notas e faltas. A API utilizada foi desenvolvida pelo CyberRoot
+# com PHP e Crawler, e é consumida usando React Native e TypeScript.
