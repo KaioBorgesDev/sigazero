@@ -41,3 +41,6 @@
 Este projeto tem como objetivo recriar o sistema SIGA da FATEC em uma versão mobile para fornecer uma interface
  mais limpa para acessar informações simples, como notas e faltas. A API utilizada foi desenvolvida pelo CyberRoot
  com PHP e Crawler, e é consumida usando React Native e TypeScript.
+ 
+ link-api
+https://github.com/Cyber-Root0/siga-api
